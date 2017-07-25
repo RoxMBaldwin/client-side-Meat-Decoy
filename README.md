@@ -1,2 +1,2 @@
 # client-side-breathers
-Client Side Breathers
+Client-Side Breathers
