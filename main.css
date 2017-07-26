@@ -1,3 +1,56 @@
 html {
   background-color: Lavender;
 }
+
+.navbar-inverse {
+  background-color: #B2628D;
+}
+
+
+h2.tagline {
+  text-align: center;
+  color: #FFCCE7;
+}
+
+div.jumbotron {
+  margin-top: 6em;
+  background-color: #B2628D;
+  color: #FFE6F3;
+}
+
+.brains {
+  text-align: center;
+}
+
+div.row.row-offcanvas.row-offcanvas-right {
+  display: flex;
+  justify-content: center;
+  background-color: white;
+
+}
+
+#tableContainer {
+  display: flex;
+  flex-direction: row;
+  background-color: #FFCCE7;
+  justify-content: center;
+  margin-bottom: 4em;
+  margin-top: 4em;
+}
+
+div.column1 {
+  padding-right: 6em;
+}
+
+div.column2 {
+  padding-left: 6em;
+}
+
+#tableUpdate {
+  background-color: #E9FFE2;
+  color: #96B284;
+}
+
+div.col-xs-6.col-lg-4 {
+  text-align: center;
+}

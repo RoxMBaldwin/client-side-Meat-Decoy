@@ -13,7 +13,7 @@ function appendTable(data){
   let $infected = data[0].infected
 
   let table = `
-        
+           <div class="column1">
             <h3><span class="glyphicon glyphicon-tent" aria-hidden="true"></span></h3>
               <p>${$shelter}</p>
               <br>
@@ -23,13 +23,16 @@ function appendTable(data){
             <h3><span class="glyphicon glyphicon-road" aria-hidden="true"></span></h3>
               <p>${$transportation}</p>
               <br>
+          </div>
+          <div class="column2">
             <h3><span class="glyphicon glyphicon-user" aria-hidden="true"></span></h3>
               <p>${$groupNum}</p>
               <br>
             <h3><span class="glyphicon glyphicon-tint" aria-hidden="true"></span></h3>
               <p>${$infected}</p>
-              <br>`
+              <br>
+          </div>`
 
-  $('#container').append(table)
+  $('#tableContainer').append(table)
 
 }
