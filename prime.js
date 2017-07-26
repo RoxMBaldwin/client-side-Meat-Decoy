@@ -8,7 +8,54 @@ $(document).ready(function() {
 
 const baseURL = 'https://intense-bastion-27693.herokuapp.com/meatdecoy'
 
+function freshMeat(event) {
+
+  let table = `
+          <div id="tableUpdate"class="row">
+            <div class="col-xs-6 col-lg-4">
+              <h2>fresh meat <span class="glyphicon glyphicon-heart" aria-hidden="true"></span></h2>
+              <label for="delete"></label>
+              <input class="delete" type="text" name="" value="">
+            </div>
+            <div class="col-xs-6 col-lg-4">
+              <h2>shelter <span class="glyphicon glyphicon-tent" aria-hidden="true"></span></h2>
+              <label for="shelter"></label>
+              <input class="shelter" type="text" name="" value="">
+            </div>
+            <div class="col-xs-6 col-lg-4">
+              <h2>protection <span class="glyphicon glyphicon-scissors" aria-hidden="true"></span></h2>
+              <label for="protection"></label>
+              <input class="protection" type="text" name="" value="">
+            </div>
+            <div class="col-xs-6 col-lg-4">
+              <h2>transportation <span class="glyphicon glyphicon-road" aria-hidden="true"></span></h2>
+              <label for="transportation"></label>
+              <input class="transportation" type="text" name="" value="">
+            </div>
+            <div class="col-xs-6 col-lg-4">
+              <h2># people in group <span class="glyphicon glyphicon-user" aria-hidden="true"></span></h2>
+              <label for="numOfPeople"></label>
+              <input class="numOfPeople" type="text" name="" value="">
+            </div>
+            <div class="col-xs-6 col-lg-4">
+              <h2>infected? <span class="glyphicon glyphicon-tint" aria-hidden="true"></span></h2>
+              <label for="infected"></label>
+              <input class="infected" type="text" name="" value="">
+            </div>
+          </div>
+          <div id="addFreshMeat">
+            <h2 class="saveSkin">save my skin</h2>
+            <button type="button" class="btn btn-default" aria-label="Left Align">
+            <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+          </button>
+          </div>`
+
+  $('#tableContainer').html(table)
+
+}
+
 function addInfo(data){
+  let $name = data[0].name
   let $protection = data[0].protection
   let $shelter = data[0].shelter
   let $groupNum = data[0].how_many_people_in_group
@@ -16,24 +63,77 @@ function addInfo(data){
   let $infected = data[0].infected
 
   let table = `
-           <div class="column1">
-            <h3><span class="glyphicon glyphicon-tent" aria-hidden="true"></span></h3>
-              <p>${$shelter}</p>
-              <br>
-            <h3><span class="glyphicon glyphicon-scissors" aria-hidden="true"></span></h3>
-              <p>${$protection}</p>
-              <br>
-            <h3><span class="glyphicon glyphicon-road" aria-hidden="true"></span></h3>
-              <p>${$transportation}</p>
-              <br>
+            <div class="columns">
+              <div class="meatName">
+                <h3>${$name}</h3>
+              </div>
+              <div class="column1">
+                <h3><span class="glyphicon glyphicon-tent" aria-hidden="true"></span></h3>
+                  <p>${$shelter}</p>
+                  <br>
+                <h3><span class="glyphicon glyphicon-scissors" aria-hidden="true"></span></h3>
+                  <p>${$protection}</p>
+                  <br>
+                <h3><span class="glyphicon glyphicon-road" aria-hidden="true"></span></h3>
+                  <p>${$transportation}</p>
+                  <br>
+              </div>
+              <div class="column2">
+                <h3><span class="glyphicon glyphicon-user" aria-hidden="true"></span></h3>
+                <p>${$groupNum}</p>
+                <br>
+              <h3><span class="glyphicon glyphicon-tint" aria-hidden="true"></span></h3>
+                <p>${$infected}</p>
+                <br>
+              </div>
           </div>
-          <div class="column2">
-            <h3><span class="glyphicon glyphicon-user" aria-hidden="true"></span></h3>
-              <p>${$groupNum}</p>
-              <br>
-            <h3><span class="glyphicon glyphicon-tint" aria-hidden="true"></span></h3>
-              <p>${$infected}</p>
-              <br>
+          <div id="tableUpdate"class="row">
+            <div class="col-xs-6 col-lg-4">
+              <h2>shelter</h2>
+              <label for="shelter"></label>
+              <input class="shelter" type="text" name="" value="">
+              <button type="button" class="btn btn-default" aria-label="Left Align">
+                <span class="glyphicon glyphicon-tent" aria-hidden="true"></span>
+              </button>
+            </div>
+            <div class="col-xs-6 col-lg-4">
+              <h2>protection</h2>
+              <label for="protection"></label>
+              <input class="protection" type="text" name="" value="">
+              <button type="button" class="btn btn-default" aria-label="Left Align">
+                <span class="glyphicon glyphicon-scissors" aria-hidden="true"></span>
+              </button>
+            </div>
+            <div class="col-xs-6 col-lg-4">
+              <h2>transportation</h2>
+              <label for="transportation"></label>
+              <input class="transportation" type="text" name="" value="">
+              <button type="button" class="btn btn-default" aria-label="Left Align">
+                <span class="glyphicon glyphicon-road" aria-hidden="true"></span>
+              </button>
+            </div>
+            <div class="col-xs-6 col-lg-4">
+              <h2># people in group</h2>
+              <label for="numOfPeople"></label>
+              <input class="numOfPeople" type="text" name="" value="">
+              <button type="button" class="btn btn-default" aria-label="Left Align">
+                <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+              </button>
+            </div>
+            <div class="col-xs-6 col-lg-4">
+              <h2>infected?</h2>
+              <label for="infected"></label>
+              <input class="infected" type="text" name="" value="">
+              <button type="button" class="btn btn-default" aria-label="Left Align">
+                <span class="glyphicon glyphicon-tint" aria-hidden="true"></span>
+              </button>
+            </div>
+            <div class="col-xs-6 col-lg-4">
+              <h2>dead meat</h2>
+              <button type="button" class="btn btn-default removeButton" aria-label="Left Align">
+                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+              </button>
+            </div>
           </div>`
 
   $('#tableContainer').html(table)
@@ -65,10 +165,10 @@ function getNames(data){
 
     let nameGroup = `
           <div class="${name}">
-          <button id="personButton" type="button" class="btn btn-default personButton" aria-label="Left Align">
-            <span class="glyphicon glyphicon-unchecked" aria-hidden="true">${name}</span>
-          </button>
-        </div>`
+            <button id="personButton" type="button" class="btn btn-default personButton" aria-label="Left Align">
+              <span class="glyphicon glyphicon-unchecked" aria-hidden="true">${name}</span>
+            </button>
+          </div>`
 
     $('#tableContainer').append(nameGroup)
 
@@ -76,4 +176,5 @@ function getNames(data){
   $('.personButton').click((event) => {
     meatInfo(event, data)
   })
+  $('#personButton').click(freshMeat)
 }

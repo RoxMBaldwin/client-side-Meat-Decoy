@@ -29,15 +29,46 @@ div.row.row-offcanvas.row-offcanvas-right {
 
 }
 
+.contentContainer {
+  display: flex;
+  justify-content: center;
+}
 
+.newName {
+  margin-bottom: 2em;
+}
+
+#personButton {
+  margin: .5em;
+}
+
+#addFreshMeat {
+  display: flex;
+  justify-content: center;
+  margin: 1em;
+}
+
+.saveSkin {
+  margin: .5em;
+}
 
 #tableContainer {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  align-content: center;
   background-color: #FFCCE7;
   justify-content: center;
   margin-bottom: 4em;
   margin-top: 4em;
+}
+
+.columns {
+  display: flex;
+  justify-content: center;
+}
+
+.meatName {
+  padding-right: 3em;
 }
 
 div.column1 {
