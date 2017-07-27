@@ -4,37 +4,25 @@ $(document).ready(function() {
   .then(getNames)
 
 })
-// https://intense-bastion-27693.herokuapp.com/meatdecoy
+
 const baseURL = 'http://localhost:4000/meatdecoy'
 const $updateButton = $('.updateButton')
 const $form = $('form')
 
-// function updateMeat($shelter, $protection, $transportation, $numOfPeople, $infected){
-//   fetch(baseURL, {method: 'Post'})
-//     .then(data => data.json())
-// }
+function deleteMeat(event){
+  event.preventDefault()
+  let id = event.target.id
 
+  $.ajax({
+    url: `${baseURL}/${id}`,
+    type: 'DELETE'
+  })
+  .then(data => {
+    $('.columns').empty()
+    $('.columns').append(`<h3>ANOTHER ONE BITES THE DUST</h3>`)
+  })
 
-
-//
-// function submitInfo(event, data){
-//   event.preventDefault()
-//
-//   const $shelter = $('.shelter').val()
-//   const $protection = $('.protection').val()
-//   const $transportation = $('.transportation').val()
-//   const $numOfPeople = $('.numOfPeople').val()
-//   const $infected = $('.infected').val()
-//
-//   updateMeat($shelter, $protection, $transportation, $numOfPeople, $infected)
-// }
-//
-// function saveSkin(event){
-//   $.post(baseURL, postBody).then(function() {
-//     console.log('yeah posted!')
-//   })
-// }
-
+}
 
 function freshMeat(event) {
 
@@ -89,13 +77,11 @@ function freshMeat(event) {
         how_many_people_in_group: $('.numOfPeople').val(),
         infected: $('.infected').val()
       }
-      $.post(baseURL, postBody).then(function() {
-        getNames
+      $.post(baseURL, postBody).then(data => {
+        window.location.reload()
       })
-    })
 
-
-
+  })
 }
 
 function addInfo(data){
@@ -105,6 +91,7 @@ function addInfo(data){
   let $groupNum = data[0].how_many_people_in_group
   let $transportation = data[0].transportation
   let $infected = data[0].infected
+  let $id = data[0].id
 
   let table = `
             <div class="columns">
@@ -175,7 +162,7 @@ function addInfo(data){
             </div>
             <div class="col-xs-6 col-lg-4">
               <h2>dead meat</h2>
-              <button type="button" class="btn btn-default removeButton" aria-label="Left Align">
+              <button id="${$id}" type="button" class="btn btn-default removeButton" aria-label="Left Align">
                 <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
               </button>
             </div>
@@ -184,9 +171,7 @@ function addInfo(data){
 
   $('#tableContainer').html(table)
 
-  // $('.updateButton').click((event) => {
-  //   submitInfo(event, data)
-  // })
+  $('.removeButton').click(deleteMeat)
 }
 
 function meatInfo(event, data){
@@ -204,8 +189,6 @@ function meatInfo(event, data){
       .then(addInfo)
     }
   }
-
-  // $.get(baseURL + id)
 }
 
 function getNames(data){

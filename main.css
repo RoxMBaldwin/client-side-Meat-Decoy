@@ -6,6 +6,11 @@ html {
   background-color: #B2628D;
 }
 
+.bodyHeader {
+  margin: 1em;
+  text-align: left;
+}
+
 
 h2.tagline {
   text-align: center;
