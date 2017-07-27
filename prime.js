@@ -1,12 +1,40 @@
 $(document).ready(function() {
 
-
   $.get(baseURL)
   .then(getNames)
 
 })
+// https://intense-bastion-27693.herokuapp.com/meatdecoy
+const baseURL = 'http://localhost:4000/meatdecoy'
+const $updateButton = $('.updateButton')
+const $form = $('form')
 
-const baseURL = 'https://intense-bastion-27693.herokuapp.com/meatdecoy'
+// function updateMeat($shelter, $protection, $transportation, $numOfPeople, $infected){
+//   fetch(baseURL, {method: 'Post'})
+//     .then(data => data.json())
+// }
+
+
+
+//
+// function submitInfo(event, data){
+//   event.preventDefault()
+//
+//   const $shelter = $('.shelter').val()
+//   const $protection = $('.protection').val()
+//   const $transportation = $('.transportation').val()
+//   const $numOfPeople = $('.numOfPeople').val()
+//   const $infected = $('.infected').val()
+//
+//   updateMeat($shelter, $protection, $transportation, $numOfPeople, $infected)
+// }
+//
+// function saveSkin(event){
+//   $.post(baseURL, postBody).then(function() {
+//     console.log('yeah posted!')
+//   })
+// }
+
 
 function freshMeat(event) {
 
@@ -14,8 +42,8 @@ function freshMeat(event) {
           <div id="tableUpdate"class="row">
             <div class="col-xs-6 col-lg-4">
               <h2>fresh meat <span class="glyphicon glyphicon-heart" aria-hidden="true"></span></h2>
-              <label for="delete"></label>
-              <input class="delete" type="text" name="" value="">
+              <label for="name"></label>
+              <input class="name" type="text" name="" value="">
             </div>
             <div class="col-xs-6 col-lg-4">
               <h2>shelter <span class="glyphicon glyphicon-tent" aria-hidden="true"></span></h2>
@@ -45,12 +73,28 @@ function freshMeat(event) {
           </div>
           <div id="addFreshMeat">
             <h2 class="saveSkin">save my skin</h2>
-            <button type="button" class="btn btn-default" aria-label="Left Align">
+            <button type="button" class="btn btn-default saveButton" aria-label="Left Align">
             <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
           </button>
           </div>`
 
   $('#tableContainer').html(table)
+
+    $('.saveButton').click(function(){
+      var postBody = {
+        name: $('.name').val(),
+        shelter: $('.shelter').val(),
+        protection: $('.protection').val(),
+        transportation: $('.transportation').val(),
+        how_many_people_in_group: $('.numOfPeople').val(),
+        infected: $('.infected').val()
+      }
+      $.post(baseURL, postBody).then(function() {
+        getNames
+      })
+    })
+
+
 
 }
 
@@ -90,9 +134,10 @@ function addInfo(data){
           <div id="tableUpdate"class="row">
             <div class="col-xs-6 col-lg-4">
               <h2>shelter</h2>
+            <form>
               <label for="shelter"></label>
-              <input class="shelter" type="text" name="" value="">
-              <button type="button" class="btn btn-default" aria-label="Left Align">
+              <input class="shelter" type="text">
+              <button class="updateButton" type="button" class="btn btn-default" aria-label="Left Align">
                 <span class="glyphicon glyphicon-tent" aria-hidden="true"></span>
               </button>
             </div>
@@ -100,7 +145,7 @@ function addInfo(data){
               <h2>protection</h2>
               <label for="protection"></label>
               <input class="protection" type="text" name="" value="">
-              <button type="button" class="btn btn-default" aria-label="Left Align">
+              <button class="updateButton" type="button" class="btn btn-default" aria-label="Left Align">
                 <span class="glyphicon glyphicon-scissors" aria-hidden="true"></span>
               </button>
             </div>
@@ -108,7 +153,7 @@ function addInfo(data){
               <h2>transportation</h2>
               <label for="transportation"></label>
               <input class="transportation" type="text" name="" value="">
-              <button type="button" class="btn btn-default" aria-label="Left Align">
+              <button class="updateButton" type="button" class="btn btn-default" aria-label="Left Align">
                 <span class="glyphicon glyphicon-road" aria-hidden="true"></span>
               </button>
             </div>
@@ -116,7 +161,7 @@ function addInfo(data){
               <h2># people in group</h2>
               <label for="numOfPeople"></label>
               <input class="numOfPeople" type="text" name="" value="">
-              <button type="button" class="btn btn-default" aria-label="Left Align">
+              <button class="updateButton" type="button" class="btn btn-default" aria-label="Left Align">
                 <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
               </button>
             </div>
@@ -124,7 +169,7 @@ function addInfo(data){
               <h2>infected?</h2>
               <label for="infected"></label>
               <input class="infected" type="text" name="" value="">
-              <button type="button" class="btn btn-default" aria-label="Left Align">
+              <button class="updateButton" type="button" class="btn btn-default" aria-label="Left Align">
                 <span class="glyphicon glyphicon-tint" aria-hidden="true"></span>
               </button>
             </div>
@@ -134,10 +179,14 @@ function addInfo(data){
                 <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
               </button>
             </div>
+            </form>
           </div>`
 
   $('#tableContainer').html(table)
 
+  // $('.updateButton').click((event) => {
+  //   submitInfo(event, data)
+  // })
 }
 
 function meatInfo(event, data){
@@ -156,7 +205,7 @@ function meatInfo(event, data){
     }
   }
 
-  $.get(baseURL + data)
+  // $.get(baseURL + id)
 }
 
 function getNames(data){
