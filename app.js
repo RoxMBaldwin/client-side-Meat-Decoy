@@ -4,8 +4,8 @@ $(document).ready(function() {
   .then(getNames)
 
 })
-
-const baseURL = 'http://localhost:4000/meatdecoy'
+// http://localhost:4000/meatdecoy/
+const baseURL = 'https://intense-bastion-27693.herokuapp.com/meatdecoy/'
 const $updateButton = $('.updateButton')
 const $form = $('form')
 
@@ -14,7 +14,7 @@ function deleteMeat(event){
   let id = event.target.id
 
   $.ajax({
-    url: `${baseURL}/${id}`,
+    url: `${baseURL}${id}`,
     type: 'DELETE'
   })
   .then(data => {
@@ -185,7 +185,7 @@ function meatInfo(event, data){
     if($nameVar === name){
       const id = data[i].id
 
-      $.get(baseURL + '/' + id)
+      $.get(baseURL + id)
       .then(addInfo)
     }
   }
