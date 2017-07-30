@@ -5,9 +5,8 @@ $(document).ready(function() {
 
 })
 // http://localhost:4000/meatdecoy/
+//https://intense-bastion-27693.herokuapp.com/meatdecoy/
 const baseURL = 'https://intense-bastion-27693.herokuapp.com/meatdecoy/'
-const $updateButton = $('.updateButton')
-const $form = $('form')
 
 function deleteMeat(event){
   event.preventDefault()
@@ -18,10 +17,9 @@ function deleteMeat(event){
     type: 'DELETE'
   })
   .then(data => {
-    $('.columns').empty()
-    $('.columns').append(`<h3>ANOTHER ONE BITES THE DUST</h3>`)
+    window.location.reload()
   })
-
+  // $('#homeButton').click(window.location.reload())
 }
 
 function freshMeat(event) {
