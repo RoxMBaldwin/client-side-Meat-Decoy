@@ -56,6 +56,10 @@ div.row.row-offcanvas.row-offcanvas-right {
   margin: .5em;
 }
 
+button.btn.btn-default.updateButton {
+  margin: 1em;
+}
+
 #tableContainer {
   display: flex;
   flex-direction: column;

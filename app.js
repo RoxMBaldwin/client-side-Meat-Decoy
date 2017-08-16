@@ -3,10 +3,41 @@ $(document).ready(function() {
   $.get(baseURL)
   .then(getNames)
 
-})
+})//closing line 1
 // http://localhost:4000/meatdecoy/
 //https://intense-bastion-27693.herokuapp.com/meatdecoy/
-const baseURL = 'https://intense-bastion-27693.herokuapp.com/meatdecoy/'
+const baseURL = 'http://localhost:4000/meatdecoy/'
+
+// function editMeat(event, data){
+//   let $clicked = $(event.currentTarget)
+//   let $nameVar = $clicked[0].innerText
+//
+//   for(var i = 0; i < data.length; i++){
+//     let name = data[i].name
+//     const id = data[i].id
+//
+//     if($('.updateButton').innerText === null){
+//       var putBody = data
+//     }
+//
+//     //   var putBody = {
+//     //   name: $('.name').val(),
+//     //   shelter: $('.shelter').val(),
+//     //   protection: $('.protection').val(),
+//     //   transportation: $('.transportation').val(),
+//     //   how_many_people_in_group: $('.numOfPeople').val(),
+//     //   infected: $('.infected').val()
+//     //
+//     // $.ajax({
+//     //   url: `${baseURL}${id}`,
+//     //   type: 'PUT',
+//     //   data: putBody
+//     })
+//     // .then(data => {
+//     //   window.location.reload()
+//     })
+//   }}
+// }
 
 function deleteMeat(event){
   event.preventDefault()
@@ -121,40 +152,45 @@ function addInfo(data){
               <h2>shelter</h2>
             <form>
               <label for="shelter"></label>
-              <input class="shelter" type="text">
-              <button class="updateButton" type="button" class="btn btn-default" aria-label="Left Align">
+              <input class="shelter" type="text" value="${$shelter}">
+              <button type="button" class="btn btn-default updateButton" aria-label="Left Align">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                 <span class="glyphicon glyphicon-tent" aria-hidden="true"></span>
               </button>
             </div>
             <div class="col-xs-6 col-lg-4">
               <h2>protection</h2>
               <label for="protection"></label>
-              <input class="protection" type="text" name="" value="">
-              <button class="updateButton" type="button" class="btn btn-default" aria-label="Left Align">
+              <input class="protection" type="text" name="" value="${$protection}">
+              <button type="button" class="btn btn-default updateButton" aria-label="Left Align">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                 <span class="glyphicon glyphicon-scissors" aria-hidden="true"></span>
               </button>
             </div>
             <div class="col-xs-6 col-lg-4">
               <h2>transportation</h2>
               <label for="transportation"></label>
-              <input class="transportation" type="text" name="" value="">
-              <button class="updateButton" type="button" class="btn btn-default" aria-label="Left Align">
+              <input class="transportation" type="text" name="" value="${$transportation}">
+              <button type="button" class="btn btn-default updateButton" aria-label="Left Align">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                 <span class="glyphicon glyphicon-road" aria-hidden="true"></span>
               </button>
             </div>
             <div class="col-xs-6 col-lg-4">
               <h2># people in group</h2>
               <label for="numOfPeople"></label>
-              <input class="numOfPeople" type="text" name="" value="">
-              <button class="updateButton" type="button" class="btn btn-default" aria-label="Left Align">
+              <input class="numOfPeople" type="text" name="" value="${$groupNum}">
+              <button type="button" class="btn btn-default updateButton" aria-label="Left Align">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                 <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
               </button>
             </div>
             <div class="col-xs-6 col-lg-4">
               <h2>infected?</h2>
               <label for="infected"></label>
-              <input class="infected" type="text" name="" value="">
-              <button class="updateButton" type="button" class="btn btn-default" aria-label="Left Align">
+              <input class="infected" type="text" name="" value="${$infected}">
+              <button type="button" class="btn btn-default updateButton" aria-label="Left Align">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                 <span class="glyphicon glyphicon-tint" aria-hidden="true"></span>
               </button>
             </div>
@@ -164,12 +200,20 @@ function addInfo(data){
                 <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
               </button>
             </div>
+            <div class="col-xs-6 col-lg-4">
+              <h2>save it all</h2>
+              <button id="${$id}" type="button" class="btn btn-default saveAllButton" aria-label="Left Align">
+                <span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>
+              </button>
+            </div>
             </form>
           </div>`
 
   $('#tableContainer').html(table)
 
   $('.removeButton').click(deleteMeat)
+
+  $('.saveAllButton').click(editMeat)
 }
 
 function meatInfo(event, data){
