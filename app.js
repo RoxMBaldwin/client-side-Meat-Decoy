@@ -3,7 +3,7 @@ $(document).ready(function() {
   $.get(baseURL)
   .then(getNames)
 
-})//closing line 1
+})
 // http://localhost:4000/meatdecoy/
 //https://intense-bastion-27693.herokuapp.com/meatdecoy/
 const baseURL = 'https://intense-bastion-27693.herokuapp.com/meatdecoy/'
@@ -150,19 +150,23 @@ function addInfo(data){
 
   let table = `
             <div class="columns">
+              <div class="bodyHeader">
+                <h3>manage my meat:</h3>
+              </div>
+              <div class="currentInputs">
               <div class="meatName">
                 <h3>${$name}</h3>
               </div>
               <div class="column1">
                 <h3><span class="glyphicon glyphicon-tent" aria-hidden="true"></span></h3>
-                  <p class="shelterDisplay">${$shelter}</p>
-                  <br>
+                <p class="shelterDisplay">${$shelter}</p>
+                <br>
                 <h3><span class="glyphicon glyphicon-scissors" aria-hidden="true"></span></h3>
-                  <p class="protectionDisplay">${$protection}</p>
-                  <br>
+                <p class="protectionDisplay">${$protection}</p>
+                <br>
                 <h3><span class="glyphicon glyphicon-road" aria-hidden="true"></span></h3>
-                  <p class="transportationDisplay">${$transportation}</p>
-                  <br>
+                <p class="transportationDisplay">${$transportation}</p>
+                <br>
               </div>
               <div class="column2">
                 <h3><span class="glyphicon glyphicon-user" aria-hidden="true"></span></h3>
@@ -172,11 +176,17 @@ function addInfo(data){
                 <p class="infectedDisplay">${$infected}</p>
                 <br>
               </div>
+              </div>
           </div>
-          <div id="tableUpdate"class="row">
+          <div id="tableUpdate" class="row">
+
+          <div class="userInputs">
+          <div class="subHeader">
+            <h3>updates save lives</h3>
+          </div>
+          <div class="inputs">
             <div class="col-xs-6 col-lg-4">
               <h2>shelter</h2>
-            <form>
               <label for="shelter"></label>
               <input class="shelter" type="text" value="${$shelter}">
               <button type="button" data-id="${$id}" class="btn btn-default updateButton" aria-label="Left Align">
@@ -220,20 +230,24 @@ function addInfo(data){
                 <span class="glyphicon glyphicon-tint" aria-hidden="true"></span>
               </button>
             </div>
-            <div class="col-xs-6 col-lg-4">
-              <h2>dead meat</h2>
-              <button id="${$id}" type="button" class="btn btn-default removeButton" aria-label="Left Align">
+            </div>
+            </div>
+            <div class="deleteSaveButtons">
+              <div class="col-xs-6 col-lg-4">
+                <h2>dead meat</h2>
+                <button id="${$id}" type="button" class="btn btn-default removeButton" aria-label="Left Align">
                 <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-              </button>
-            </div>
-            <div class="col-xs-6 col-lg-4">
-              <h2>save it all</h2>
-              <button id="${$id}" type="button" class="btn btn-default saveAllButton" aria-label="Left Align">
+                </button>
+              </div>
+              <div class="col-xs-6 col-lg-4">
+                <h2>save it all</h2>
+                <button id="${$id}" type="button" class="btn btn-default saveAllButton" aria-label="Left Align">
                 <span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>
-              </button>
+                </button>
+              </div>
             </div>
-            </form>
-          </div>`
+
+        </div>`
 
   $('#tableContainer').html(table)
 

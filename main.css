@@ -2,12 +2,32 @@ html {
   background-color: Lavender;
 }
 
+body {
+  display: flex;
+  justify-content: center;
+}
+
 .navbar-inverse {
   background-color: #B2628D;
 }
 
-.bodyHeader {
-  margin: 1em;
+div.bodyHeader {
+  padding: 1em;
+  background-color: white;
+}
+
+div.userinputs {
+  margin: 2em;
+}
+
+.inputs {
+  display: flex;
+  flex-direction: row;
+}
+
+div.subHeader {
+  padding: 1em;
+  background-color: white;
 }
 
 
@@ -60,11 +80,24 @@ button.btn.btn-default.updateButton {
   margin: 1em;
 }
 
+.deleteSaveButtons {
+  background-color: Red;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: #96B284;
+  color: #E9FFE2;
+}
+
+div.col-xs-6.col-lg-4 {
+  float: none;
+
+}
+
 #tableContainer {
   display: flex;
   flex-direction: column;
   align-content: center;
-  background-color: #FFCCE7;
   justify-content: center;
   margin-bottom: 4em;
   margin-top: 4em;
@@ -73,18 +106,29 @@ button.btn.btn-default.updateButton {
 .columns {
   display: flex;
   justify-content: center;
+  flex-direction: column;
+  padding: 2em;
+}
+
+div.currentInputs {
+  display: flex;
+  flex-direction: row;
+
 }
 
 .meatName {
   padding-right: 3em;
+  background-color: #FFCCE7;
 }
 
 div.column1 {
   padding-right: 6em;
+  background-color: #FFCCE7;
 }
 
 div.column2 {
   padding-left: 6em;
+  background-color: #FFCCE7;
 }
 
 #tableUpdate {
