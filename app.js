@@ -4,8 +4,8 @@ $(document).ready(function() {
   .then(getNames)
 
 })
-// http://localhost:4000/meatdecoy/
-//https://intense-bastion-27693.herokuapp.com/meatdecoy/
+
+// const baseURL = 'http://localhost:4000/meatdecoy/'
 const baseURL = 'https://intense-bastion-27693.herokuapp.com/meatdecoy/'
 
 function editMeat(event){
